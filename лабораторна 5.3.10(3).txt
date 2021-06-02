@@ -1,0 +1,127 @@
+#include <iostream>
+using namespace std;
+class FlightBooking {
+
+public:
+  FlightBooking(int id, int capacity, int reserved);
+  void printStatus(FlightBooking* booking);
+  double reserved1(FlightBooking* booking);
+  int add (FlightBooking* booking);
+  int cancel (FlightBooking* booking);
+  //int getId() { retutn id };
+  int creat();
+  int delete_f();
+  int quit();
+private:
+    int capacity;
+   int reserved;
+  int id;
+};
+void FlightBooking::printStatus(FlightBooking* booking) {
+
+  double percent;
+  if (this != nullptr) {
+
+    percent=FlightBooking::reserved1 (this);
+    printf("Flight %d: %d/%d (%lf) seats taken", this->id, reserved, capacity, percent, '\n' );
+}
+}
+double FlightBooking::reserved1(FlightBooking* booking) {
+
+    this->reserved = reserved;
+    this->capacity = capacity;
+  double percent = 0;
+  percent = 100.0 * ((double)reserved / capacity);  
+  return percent;
+}
+FlightBooking::FlightBooking(int id, int capacity, int reserved) {
+
+  this->id = id;
+  this->capacity = capacity;
+  this->reserved = reserved;
+  double check = FlightBooking::reserved1 (this);
+  if (this->reserved > this->capacity || check >=105 || reserved < 0) {
+
+    reserved = 0;
+    cout << "Cannot perform this operation \n";
+}
+  else {
+
+    FlightBooking::printStatus(this);
+}
+}
+int FlightBooking::add(FlightBooking* booking) {
+
+    this->reserved = reserved;
+    cout << "Add new reservations to the flight:" << endl;
+    int new_reserved = 0;
+    cin >> new_reserved;
+    reserved = reserved + new_reserved;
+    return this -> reserved;
+}
+    int FlightBooking::cancel (FlightBooking* booking) {
+
+    this->reserved = reserved;
+    cout << "Cancel reservations to the flight:" << endl;
+    int cancel_reserved = 0;
+    cin >> cancel_reserved;
+    reserved = reserved - cancel_reserved;
+    return this -> reserved;
+}
+int FlightBooking::quit() { 
+ 
+    this->id = id;
+    this->capacity = capacity;
+    cout << "Enter the id:" << endl;
+    cin >> id; 
+    cout << "Provide flight capacity:" << endl;
+    cin >> capacity;
+    return 0;
+}
+int FlightBooking::delete_f() {
+
+    this->id = id;
+    this->capacity = capacity;
+    this->reserved = reserved;
+    cout << "Enter the id:" << endl; 
+    cin >> id;
+    this->id = 0;
+    this->capacity = 0;
+    this->reserved = 0;
+    return 0;
+}
+    int main() {
+
+        int reserved = 0,
+        capacity = 0,
+        choice = 0;
+        cout << "Provide flight capacity: ";
+        cin >> capacity;
+        cout << "Provide number of reserved seats: ";
+        cin >> reserved;
+    FlightBooking booking(1, capacity, reserved);
+    cout << " What do you want?" << endl << "1. Add new reservations" << endl << "2. Cancel reservations" << endl << "3. Exit" << endl <<"4. Create" << endl; 
+    cin >> choice;
+    if(choice == 1) {
+
+       reserved=booking.add(&booking);
+       cout << reserved;
+       booking.printStatus(&booking);
+    }
+    else if (choice == 2) {
+
+        booking.cancel (&booking);
+        cout << reserved;
+         booking.printStatus(&booking);
+    }
+    else if (choice == 3) {
+
+        booking.quit ();
+         booking.printStatus(&booking);
+    }
+    else {
+
+        cout << "Can not find this command" << endl;
+    }
+    return 0;
+}

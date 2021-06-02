@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Fraction{
+public:
+Fraction(int A, int B);
+string toString();
+double toDouble();
+void toCorect(Fraction*fraction) // Прав. дріб
+{
+    this -> A = A;
+    this -> B = B;
+    count = 0;
+//int count ;
+//cout << "GO" ;
+//cin >> A ;
+//cin >> B ;
+while (A > B)
+    {
+        A=A-B ;
+        count++ ;
+    }
+        if (A < B){
+        cout << count << " " << A <<" / "<< B<< endl; 
+        }
+        if (B < 0 ) {
+            cout << count << " " << " - " <<A <<" / "<< " - " << B << endl;
+        }
+}
+private:
+int A;
+int count ;
+int B;
+};
+// implement Fraction methods
+Fraction::Fraction(int A,int B) {
+    this -> A = A;
+    this -> B = B;
+    }
+int main(void) {
+int A;
+int B;
+cout << " enter numinator: " << endl ;
+cin >> A ;
+cout << " enter denominator: " << endl ;
+cin >> B ;
+//std::string input = "";
+//std::cin.getline(input);
+// parse input and get numerator and denominator
+Fraction fraction (A,B);
+fraction.toCorect (&fraction);
+ // cout << fraction.toString() << " is " fraction.toDouble() in decimal << endl;
+return 0;
+}

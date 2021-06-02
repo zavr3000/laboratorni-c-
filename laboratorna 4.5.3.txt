@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+string ReplaceAll(string str, const string& from, const string& to) {
+
+	size_t start_pos = 0;
+	while((start_pos = str.find(from, start_pos)) != std::string::npos) {
+
+        	str.replace(start_pos, from.length(), to);
+		start_pos += to.length():
+}
+    return str;
+}
+int main() {
+	cout << "Enter stop words: ";
+	string stop_words;
+	getline(cin,stop_words);
+	cout << "Enter the sentence: ";
+	string sentence;
+	getline(cin,sentence);
+	cout << ReplaceAll(sentence,stop_words,"");
+	return 0;
+}

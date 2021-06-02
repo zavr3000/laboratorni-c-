@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+
+cout << "Count: ";
+int c;
+cin >> c;
+int ** g = new int*[c];
+for (int i = 0; i < c; i++) {
+
+	cout << "Number of marks: ";
+	int n;
+	cin >> n;
+	g[i] = new int[n + 1];
+	g[i][0] = n;
+	for (int j = 1; j <= n; j++) {
+
+	cin >> g[i][j];
+}
+}
+double avgGrade = 0;
+   for (int i = 0; i < c; i++) {
+
+	double grade = 0;
+	double grades = 0;
+	for (int j = 1; j <= g[i][0]; j++) {
+
+		grade += g[i][j];
+		grades += (g[i][j]);
+}
+	grade = grade / g[i][0];
+	avgGrade += grade;
+	  cout << "Course " << i + 1 << ": final " << grade << ", grades: "	<< grades << "\n";
+	    if (i == c - 1) {
+
+	        avgGrade /= i + 1;
+}
+}
+	cout << "Overall final " << avgGrade;
+	return 0;
+}
